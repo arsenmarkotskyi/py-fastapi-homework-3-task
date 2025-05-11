@@ -188,6 +188,7 @@ async def reset_password_complete(
         result = await session.execute(
             select(PasswordResetTokenModel)
             .options(joinedload(PasswordResetTokenModel.user))
+            .join(UserModel)
             .where(
                 PasswordResetTokenModel.token == reset_data.token,
                 UserModel.email == reset_data.email,
