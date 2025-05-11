@@ -7,9 +7,9 @@ from schemas.movies import (
 )
 from schemas.accounts import (
     UserRegistrationRequestSchema,
-    UserRegistrationResponseSchema,
+    UserResponseSchema,
     UserActivationRequestSchema,
-    MessageResponseSchema,
+    # MessageResponseSchema,
     PasswordResetRequestSchema,
     PasswordResetCompleteRequestSchema,
     UserLoginResponseSchema,
