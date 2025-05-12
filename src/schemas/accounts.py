@@ -38,6 +38,11 @@ class PasswordResetRequestSchema(BaseModel):
     email: EmailStr
 
 
+class PasswordResetRequestWithTokenResponse(BaseModel):
+    message: str
+    token: str
+
+
 class PasswordResetCompleteRequestSchema(BaseModel):
     email: EmailStr
     token: str

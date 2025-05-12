@@ -28,6 +28,7 @@ from schemas.accounts import (
     PasswordResetRequestSchema,
     TokenRefreshRequestSchema,
     UserLoginRequestSchema,
+    PasswordResetRequestWithTokenResponse,
 )
 from security.interfaces import JWTAuthManagerInterface
 from core.security import hash_password, pwd_context
@@ -170,6 +171,11 @@ async def request_password_reset_token(
             reset_token = PasswordResetTokenModel(user_id=user.id)
             session.add(reset_token)
             await session.commit()
+
+            return PasswordResetRequestWithTokenResponse(
+                message="If you are registered, you will receive an email with instructions.",
+                token=reset_token.token,
+            )
 
     except Exception:
         await session.rollback()
